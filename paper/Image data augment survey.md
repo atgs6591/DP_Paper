@@ -8,6 +8,14 @@
 * Discussion
 * Future work
 * Conclusion
+# 목적
+![image](https://user-images.githubusercontent.com/108729047/215593836-9917d0d9-f106-4bbf-83d1-b91674064ac3.png)  
+Epoch가 증가할수록 Accuracy도 증가해야하는데, 어느 순간 Accuracy가 줄어드는 순간 존재. (오버피팅)  
+오버피팅의 근본적인 문제는 training set이 작다는 것, 이를 해결하기 위해 data augmentation이 필요.
+
+# 주의
+data augmentation을 과하게 진행하면 데이터의 본질이 흐려질 수 있음.  
+데이터의 양을 늘리는 것도 중요하지만 데이터의 중요 특징이 사라지면 안됨.  
 
 # 구분
 ![data augmentation 분류](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJqpuJ%2FbtrNSXgOn6X%2Fhm2RXAj4lReoamU6QtWvf1%2Fimg.png)  
@@ -104,7 +112,20 @@ MNIST 6과 8 상단을 자르면 구분이 안되는 것처럼 레이블을 보�
 
 # Deep Learning Approaches (딥러닝 기반의 데이터 증강)
 ## Feature space Augmentation
+특징을 추출하여 이미지를 증강시키는 방법.  
+![image](https://user-images.githubusercontent.com/108729047/215595436-d51c64aa-4f5f-43ab-b0f2-ed9b201d17b0.png)  
+기존 데이터를 encoder를 이용하여 저차원 벡터로 표현하고 decoder를 이용하여 다시 원래 이미지로 재구성. 이 과정에서 이미지의 feature 추출.    
+해당 이미지의 feature를 재조합하여 새로운 이미지 구성.  
+SMOTE(K-NN)도 해당 기법 이용.  
+이미지 픽셀을 섞는게 아니라 feature space에서 값을 섞어서 이미지의 특징을 더 잘 보존할 수 있음.  
+
 ## Adversarial Training
+훈련을 방해하는 노이즈를 추가하여 모델의 약점을 강화하시키기 위한 목적으로 데이터를 증강시키는 방법.  
+![image](https://user-images.githubusercontent.com/108729047/215598912-9e2c6265-c91c-485b-b486-b3012f59623b.png)  
+원본 이미지에 손실 함수로 만든 노이즈를 적용. 사람의 눈에는 노이즈가 보이지 않지만 오분류(adversarial attack)가 일어남.  
+해당 모델을 train data에 넣어 학습시킴.  
+모델의 정확도 향상에 도움을 주지는 않지만, 모델의 오분류를 막는데에는 도움을 줌.  
+
 ## GAN based Augmentation
 ## Neural style Transfer
 
