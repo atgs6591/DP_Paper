@@ -127,8 +127,16 @@ SMOTE(K-NN)도 해당 기법 이용.
 모델의 정확도 향상에 도움을 주지는 않지만, 모델의 오분류를 막는데에는 도움을 줌.  
 
 ## GAN based Augmentation
-## Neural style Transfer
+Adversarial Training의 확장판.  
+GAN은 그럴듯한 가짜를 만드는 모델이다. 실제 있을법한 이미지를 생성.  
+Generator과 Discriminator를 통해 가짜를 만드는 기술과 가짜를 구별하는 기술을 동시에 발전시키는 기술.  
+Generator(생성자)가 실제 데이터에 노이즈를 적용하여 Fake Data를 만들어내며, Discriminator(구분자)가 실제 데이터와 생성자가 생성해낸 가짜 데이터를 구별.  
+![image](https://user-images.githubusercontent.com/108729047/215658065-e5585f71-8602-4852-82ec-bab32933fe12.png)  
 
+
+## Neural style Transfer
+CNN에서 생성된 이미지의 표현을 조작하여 이미지를 증강시키는 방법.  
+transfer을 이용하여 이미지를 심층 신경망을 거쳐 새로운 스타일로 변형한 후 다른 이미지를 합성하여 새로운 이미지를 생성.
 
 
 # Meta Learning Approaches (메타 기반의 데이터 증강)
