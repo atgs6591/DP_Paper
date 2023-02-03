@@ -136,11 +136,26 @@ Generator(생성자)가 실제 데이터에 노이즈를 적용하여 Fake Data�
 
 ## Neural style Transfer
 CNN에서 생성된 이미지의 표현을 조작하여 이미지를 증강시키는 방법.  
-transfer을 이용하여 이미지를 심층 신경망을 거쳐 새로운 스타일로 변형한 후 다른 이미지를 합성하여 새로운 이미지를 생성.
+transfer을 이용하여 이미지를 심층 신경망을 거쳐 새로운 스타일로 변형한 후 다른 이미지를 합성하여 새로운 이미지를 생성.  
+
 
 
 # Meta Learning Approaches (메타 기반의 데이터 증강)
+신경망으로 신경망을 최적화하는 개념을 의미.  신경망을 이용하여 이미지 혼합, neuran transfer, 기하학적 변환 등을 통해서 스스로 데이터 증강하는 방법을 학습  
+## Neural augmentation
+
+![image](https://user-images.githubusercontent.com/108729047/216520735-4c6e3319-9753-4202-99be-211d8e56ccef.png)  
+스타일과 콘텐츠 손실의 가중치에 댇한 매개변수 
+동일한 클래스에서 두 개의 이미지를 가져오고  Neural Style Transfer를 통해 다른 임의의 이미지로 변환
+만들어진 이미지가 분류모델에 입력되고 오류를 가져와서 가중치를 수정하여 역전파에 넣어줌
+서로 다른 이미지 간의 콘텐츠 및 스타일 이미지에 대한 최적의 가중치와 CNN의 이미지 간의 매핑을 학습.   기존의 증강 기술과 뉴런스타일 접근 방식을 결합한 meta learning이 가장 가능성 있는 증강 기술이라고 생각
+
+## Smart Augmentation
+Neural style transfer가 아닌 cnn의 학습된 매개변수만 기존의 증강 기술에 적용한 방법.  
+
 ## Auto Augment
+  
+
 ## Population Based Augment
 ## Fast Auto Augment
 ## Faster Auto Augment
