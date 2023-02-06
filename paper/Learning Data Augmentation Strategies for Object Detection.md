@@ -18,3 +18,12 @@ data augmentation은 학습 데이터가 부족하거나, 데이터 증강을 �
 
 ### Rotation  
 1~359도로 이미지를 돌리는 방법. 회전 정도에 따라 안전성이 달라짐. 주로 1에서 20, -1에서 -20 정도만 rotation함.
+
+
+
+# referance
+https://baekchef1215.tistory.com/58
+https://deep-learning-study.tistory.com/705
+https://hellopotatoworld.tistory.com/5
+https://velog.io/@ailab/33l8nmxm
+https://www.arxiv-vanity.com/papers/1906.11172/
