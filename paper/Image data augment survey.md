@@ -135,14 +135,16 @@ Generator(생성자)가 실제 데이터에 노이즈를 적용하여 Fake Data�
 
 
 ## Neural style Transfer
-![image](https://user-images.githubusercontent.com/108729047/217040204-d22fc413-ef84-4987-87a4-1ea0ebc74114.png)  
-보통 CNN을 사용할 때는 layer를 이용하여 feature를 생성하고 이를 쌓아서 더 깊은 layer를 만듦.  
-Neural style Transfer는 
-보통 CNN을 사용할 때는 layer를 이용하여 feature map을 생성. 이후fea  
+CNN을 이용하여 이미지 P를 A의 스타일을 가진 새로운 X로 만드는 방법.  
+![image](https://user-images.githubusercontent.com/108729047/217041422-8eb6d5b1-e0c1-413c-8482-c5d21c5796df.png)  
 
-
-CNN에서 생성된 이미지의 표현을 조작하여 이미지를 증강시키는 방법.  
+CNN을 이용하여 이미지의 특성을 표현하는 feature map을 생성하고 이를 이용하여 두 이미지를 합성.  
 transfer을 이용하여 이미지를 심층 신경망을 거쳐 새로운 스타일로 변형한 후 다른 이미지를 합성하여 새로운 이미지를 생성.  
+
+![image](https://user-images.githubusercontent.com/108729047/217042342-1f7757cc-a620-4698-bfcc-4ca2e328c724.png)  
+
+이미지는 크게 Content Image와 Style Image로 나뉘며, Content는 변경할 이미지 Style은 특성을 가져올 이미지.  
+layer 층이 낮으면 기존의 이미지와 비슷하고 layer 층이 깊어질수록 style의 feature가 더 잘 적용되어 색다른 이미지가 생성됨.  
 
 
 
@@ -161,10 +163,4 @@ Neural style transfer가 아닌 cnn의 학습된 매개변수만 기존의 증�
 
 
 ## Auto Augment
-  
-
-## Population Based Augment
-## Fast Auto Augment
-## Faster Auto Augment
-## Rand Augment
-## Uniform Augment
+강화학습 기반의 알고리즘 이미지 증강.
