@@ -10,21 +10,25 @@ data augmentation은 학습 데이터가 부족하거나, 데이터 증강을 �
 
 # Method
 + Color operations : 이미지의 color 값을 변환하되, bounding box의 위치 좌표값에는 변화를 주지 않는다
-ex) Equalize, Contrast, Brightness...
+ex) Equalize, Contrast, Brightness...  
+
 + Geometric operations : 이미지의 위치정보를 바꾸며, bounding box annotation의 위치, 사이즈를 같이 변화시킨다
-ex) Rotate, ShearX, TranslationY...
+ex) Rotate, ShearX, TranslationY...  
+
 + Bounding box operations : 이미지 내에세 bounding box annotation이 있는 부분의 픽셀만 변화시킨다
 ex) BBox_Only_Equalize, BBox_Only_Rotate, BBox_Only_FlipLR ...
 
-![image](https://user-images.githubusercontent.com/108729047/217146361-d5f4d7a0-3521-40e5-a712-ace0e862ab00.png)
 
-### Flipping
-가장 쉬운 데이터 증강 방법.  
-이미지를 수평, 수직을 기준으로 뒤집어서 이미지를 늘리는 방식. 주로 horizontal axis (수평 축)이 vertical axis (수직 축)보다 일반적. 
+## 계산 
+L : transformation이 적용될 크기 (회전 각도, 리사이즈 크기 등)
+M : transformation이 적용될 확률
+K : 학습 할 sub-policy의 개수
 
-### Rotation  
-1~359도로 이미지를 돌리는 방법. 회전 정도에 따라 안전성이 달라짐. 주로 1에서 20, -1에서 -20 정도만 rotation함.
 
+![image](https://user-images.githubusercontent.com/108729047/217147431-a015cc44-6fd8-456f-a647-586513d73538.png)  
+
+각각 N개의 순차적인 transformation operands를 갖는 K개의 sub-policy를 학습하고 training 과정에서 각 이미지에 적용될 policy가 랜덤으로 선택된다. Figure3는 K=5, N=2일 때의 Search Space이고, 각각의 operands는 다음 내용에 해당하는 총 3개의 파라미터(predictions)를 가진다.  
+![image](https://user-images.githubusercontent.com/108729047/217146361-d5f4d7a0-3521-40e5-a712-ace0e862ab00.png)  
 
 
 # referance
