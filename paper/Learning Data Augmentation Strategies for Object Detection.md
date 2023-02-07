@@ -20,15 +20,16 @@ ex) BBox_Only_Equalize, BBox_Only_Rotate, BBox_Only_FlipLR ...
 
 
 ## 계산 
-L : transformation이 적용될 크기 (회전 각도, 리사이즈 크기 등)
-M : transformation이 적용될 확률
-K : 학습 할 sub-policy의 개수
+L : transformation이 적용될 크기 (회전 각도, 리사이즈 크기 등)  
+M : transformation이 적용될 확률  
+K : 학습 할 sub-policy의 개수  
 
-
-![image](https://user-images.githubusercontent.com/108729047/217147431-a015cc44-6fd8-456f-a647-586513d73538.png)  
 
 각각 N개의 순차적인 transformation operands를 갖는 K개의 sub-policy를 학습하고 training 과정에서 각 이미지에 적용될 policy가 랜덤으로 선택된다. Figure3는 K=5, N=2일 때의 Search Space이고, 각각의 operands는 다음 내용에 해당하는 총 3개의 파라미터(predictions)를 가진다.  
 ![image](https://user-images.githubusercontent.com/108729047/217146361-d5f4d7a0-3521-40e5-a712-ace0e862ab00.png)  
+
+
+![image](https://user-images.githubusercontent.com/108729047/217147431-a015cc44-6fd8-456f-a647-586513d73538.png)  
 
 
 # referance
