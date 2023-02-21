@@ -122,6 +122,9 @@ AmeobaNet-C model이 83.5 / 96.5(%)로 sota를 달성.
 ![image](https://user-images.githubusercontent.com/108729047/220240823-493d5c2d-73ec-4e1b-9af6-0440746bcfa8.png)  
 
 
+
+
+
 ## Referance
 ### 논문 분석
 https://creamnuts.github.io/short%20review/autoaug/
@@ -130,3 +133,11 @@ https://deepkerry.tistory.com/27
 
 ### 강화학습
 https://wordbe.tistory.com/entry/RL-%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5-part1-policy-value-function
+
+
+
+
+
+
+## 다음 논문
+https://arxiv.org/abs/1909.13719
