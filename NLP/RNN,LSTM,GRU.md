@@ -21,25 +21,31 @@ RNN에서는 cell이 이전의 값을 기억하는 메모리의 역할 수행. (
 > t를 순서대로 펼친 그림  
 
 ### RNN 구조
-![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/2c67b3f1-6509-4b66-8c61-264b9a77dcca)  
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/2c67b3f1-6509-4b66-8c61-264b9a77dcca) ![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/566e5e7e-373f-4c1c-99b7-d0da90eb5f84)
+  
 - h는 메모리 셀에서의 출력 값
 - y는 해당 시점에서의 출력
-- u(입력층을 위한 가중치), v(편향), w(이전 시점에서의 메모리 셀을 위한 가중치)는 각각 가중치  
-은닉층에서는 가중치가 2개 사용
-출력층에서는 한개의 가중치 사용
+- u(입력층을 위한 은닉층 가중치), v(출력층 가중치), w(이전 시점에서의 메모리 셀을 위한 은닉층 가중치)는 각각 가중치  
+
+은닉층 : 가중치 2개 사용  
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/844aa8c3-8a19-48c0-aae2-9072e45bfd47)  
+출력층 : 한개의 가중치 사용  
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/b03f1058-405a-4235-955c-3b7df91e6d7a)  
+
   
 ### RNN의 Short-term dependencies  
 t는 t-1에서 전달된 정보에 의존  
-![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/20468995-f43d-43f1-a897-b35f3f152e6d)  
-> 직관적인 RNN 계층  
+=> 비교적 짧은 시퀀스에 대해서만 높은 효과를 보임.
 
-**예시**  
-RNN에서 h1은 출발점 h0과 input x1에 신경망의 weight를 곱하고, 활성함수의 넣은 값을 사용해 생성된다.  
-이것이 중첩되면 ht에서 h0의 영향은 활성함수와 weight를 t번 거친 값을 갖게 된다.  
-이때 활성함수로 ReLU를 사용한다면, 양수 W가 계속 곱해져서 W의 t제곱을 h0에 곱하게 된다. 즉 h0가 지수적으로 커져 exploding gradient(쉽게 말해 network가 폭발하는 것)가 발생한다.  
-반면에 활성함수로 sigmoid(실수 입력값을 0~1 사이의 미분 가능한 수로 변환)를 사용한다면, h0은 매우 작아져 의미가 없어지게 된다.  
-
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/2ca10204-6d7e-466f-b974-7eed83562b9c)  
+역방향으로 미분을 곱해 나가면서 계산을 진행하기 때문에, 시간의 크기가 커지면 기울기가 불안해지는 문제 발생.  
 
 
 ## 장단기 메모리(Long Short-Term Memory, LSTM)
+- cell state를 추가하여 불필요한 기억은 지우고, 필요한 부분을 기억.  
+- 멀리 떨어진 과거의 정보도 현재에 영향을 주도록 고안.  
+
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/ceb31a9b-d39b-4e5c-966c-0c45c6b332f9)
+
+
 ## 게이트 순환 유닛(Gated Recurrent Unit, GRU)
