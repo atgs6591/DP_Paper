@@ -23,14 +23,14 @@ RNN에서는 cell이 이전의 값을 기억하는 메모리의 역할 수행. (
 ### RNN 구조
 ![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/2c67b3f1-6509-4b66-8c61-264b9a77dcca) ![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/566e5e7e-373f-4c1c-99b7-d0da90eb5f84)
   
-- h는 메모리 셀에서의 출력 값
-- y는 해당 시점에서의 출력
+- h는 메모리 셀에서의 출력 값  
+- y는 해당 시점에서의 출력  
 - u(입력층을 위한 은닉층 가중치), v(출력층 가중치), w(이전 시점에서의 메모리 셀을 위한 은닉층 가중치)는 각각 가중치  
 
-은닉층 : 가중치 2개 사용  
-![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/844aa8c3-8a19-48c0-aae2-9072e45bfd47)  
-출력층 : 한개의 가중치 사용  
-![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/b03f1058-405a-4235-955c-3b7df91e6d7a)  
+  - 은닉층 : 가중치 2개 사용  
+  ![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/844aa8c3-8a19-48c0-aae2-9072e45bfd47)  
+  - 출력층 : 한개의 가중치 사용  
+  ![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/b03f1058-405a-4235-955c-3b7df91e6d7a)  
 
   
 ### RNN의 Short-term dependencies  
@@ -42,10 +42,39 @@ t는 t-1에서 전달된 정보에 의존
 
 
 ## 장단기 메모리(Long Short-Term Memory, LSTM)
-- cell state를 추가하여 불필요한 기억은 지우고, 필요한 부분을 기억.  
-- 멀리 떨어진 과거의 정보도 현재에 영향을 주도록 고안.  
+- 덧셈과 곱셈 연산을 통해 불필요한 기억은 지우고, 필요한 부분을 기억.  
+- cell state를 추가하여 멀리 떨어진 과거의 정보도 현재에 영향을 주도록 고안.  
 
-![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/ceb31a9b-d39b-4e5c-966c-0c45c6b332f9)
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/dd20f7c7-288c-47ed-b0c8-9865951ac3fe)  
+
+### LSTM 구조
+1. Gate
+- **forget gate**  
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/3468175b-9262-4804-9fd5-1de05ec2edaa)  
+장기 상태의 어느 부분이 **삭제** 되어야 하는지 제어하는 역할  
+  - f(t) : 현재 시점의 x와 이전 시점의 은닉 상태가 시그모이드 함수(삭제된 정보) 통과
+  - c(t)와 곱연산
+    - 0 => 정보가 많이 삭제된 상태
+    - 1 => 정보가 온전한 상태
+- **input gate**
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/8a2c031e-3cab-44d8-b8b4-c3648b4ec5e0)  
+장기 상태의 어느 부분이 **기억** 되어야 하는지 제어하는 역할
+  - i(t) : 현재 시점의 x와 이전 시점의 은닉 상태가 시그모이드 함수 통과 (0~1)
+  - g(t) : 현재 시점의 x와 이전시점의 은닉 상태가 하이퍼볼릭탄젠트 함수 통과 (-1~1)
+  
+2. Cell state
+- Cell state
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/dedcd7fa-8f6f-424f-9cf6-4e99d23729e9)  
+삭제 게이트와 입력 게이트를 거쳐 장기 기억을 하는 역할
+  - i(t)와 g(t) 곱연산 후 c(t)와 합연산
+    - 삭제 게이트의 출력값인 f(t)가 0 => 이전 시점의 셀 상태값의 영향력 0, 현재 시점의 셀 상태값만 의존
+    - 입력 게이트의 출력값인 i(t)가 0 => 현재 시점의 셀 상태값의 영향력 0, 이전 시점의 셀 상태값만 의존
+3. Hidden state
+- Hidden state
+![image](https://github.com/mjkim0819/DP_Paper/assets/108729047/5eca7179-357e-45ad-be86-25fb74201a2f)
+장기 상태의 어느 부분을 읽어서 **현재 시점의 은닉상태**를 결정는 역할
+  - o(t) : 셀 상태값이 하이퍼볼릭탄젠트 함수 통과 (-1~1)
+    - 출력값과 연산되어 값이 걸러지는 효과
 
 
 ## 게이트 순환 유닛(Gated Recurrent Unit, GRU)
